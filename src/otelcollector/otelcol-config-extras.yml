@@ -10,7 +10,7 @@
 ##
 exporters:
   otlphttp/example:
-    endpoint: http://localhost:4317
+    endpoint: http://172.31.38.146:4317
 service:
   pipelines:
     traces:
