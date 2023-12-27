@@ -8,11 +8,16 @@
 ## Note: the spanmetrics exporter must be included in the exporters array
 ## if overriding the traces pipeline.
 ##
-#  exporters:
-#    otlphttp/example:
-#      endpoint: <your-endpoint-url>
-#
-#  service:
-#    pipelines:
-#      traces:
-#        exporters: [spanmetrics, otlphttp/example]
+exporters:
+  otlphttp/example:
+    endpoint: http://localhost:4317
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlphttp/example]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlphttp/example]
